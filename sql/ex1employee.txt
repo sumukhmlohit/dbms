@@ -1,0 +1,32 @@
+/*for sql-lite*/
+/*PRAGMA foreign_keys=ON;*/
+create table employee(
+ssn varchar2(10) primary key not null,
+name varchar2(10),
+deptno number(3)
+);
+
+create table project(
+projectno number(4) primary key not null,
+projectarea varchar2(10)
+);
+
+create table assigned_to(
+usn varchar2(10) references employee(ssn),
+projectno number(4) references project(projectno)
+);
+
+insert into employee values('is01','prashant',1);
+insert into project values(1,'database');
+insert into assigned_to values('is01',1);
+insert into project values(20,'os');
+select usn from assigned_to where projectno=(select projectno from project where projectarea='database');
+
+select count(ssn),deptno
+from employee
+group by deptno;
+
+update assigned_to
+set projectno=20 where
+usn='is01';
+select * from assigned_to;

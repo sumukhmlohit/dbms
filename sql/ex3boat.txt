@@ -1,0 +1,33 @@
+create table boat(
+bid number(4) primary key not null,
+bname varchar2(10),
+colour varchar2(10)
+);
+
+create table sailor(
+sid number(4) primary key not null,
+sname varchar2(10),
+age number(10),
+rating number(10)
+);
+
+create table reserves(
+bid number(4) references boat(bid),
+sid number(4) references sailor(sid),
+day varchar2(10)
+);
+
+insert into boat values(1,'royal navy','blue');
+insert into sailor values(1,'ram',25,8);
+insert into reserves values(1,1,'monday');
+
+insert into boat values(2,'ins vikrant','white');
+insert into reserves values(1,1,'monday');
+
+select bid from reserves where sid=(select sid from sailor where sname='ram');
+
+select bid,sname
+from reserves r join sailor s on (r.sid=s.sid);
+
+select count(bid),sid from reserves 
+group by sid;

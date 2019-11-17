@@ -1,0 +1,27 @@
+PRAGMA foreign_keys=ON;
+create table part(
+pno number(4) primary key not null,
+pname varchar2(10),
+colour varchar2(10)
+);
+
+create table warehouse(
+wno number(4) primary key not null,
+wname varchar2(10),
+city varchar2(10)
+);
+
+create table shipment(
+pno number(4) references part(pno),
+wno number(4) references warehouse(wno),
+quantity number(4),
+sdate date not null
+);
+
+insert into part values(1,'nut','black');
+insert into warehouse values(1,'amazon','bglr');
+insert into shipment values(1,1,5,26-08-99);
+
+select wname from warehouse where wno=(select wno from shipment where pno=(select pno from part where colour='red'));
+select pno,wname from shipment s join warehouse w on (s.wno=w.wno);
+select count(pno),wno from shipment group by wno;
