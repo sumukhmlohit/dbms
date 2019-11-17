@@ -1,0 +1,13 @@
+> db.book.insert({_id:{isbn:"123"},title:"comedy of errors",author:"shakespeare",publisher:"drake",borrow:{isbn:"123",usn:"is111",date:"23 07 18"}})
+WriteResult({ "nInserted" : 1 })
+> db.book.insert({_id:{isbn:"124"},title:"database",author:"ramez",publisher:"mhe",borrow:{isbn:"124",usn:"is112",date:"29 07 18"}})
+WriteResult({ "nInserted" : 1 })
+> db.book.insert({_id:{isbn:"125"},title:"database",author:"roma",publisher:"pearson",borrow:{isbn:"125",usn:"is113",date:"230 07 19"}})
+WriteResult({ "nInserted" : 1 })
+
+> db.book.find({"_id.isbn":"123"},{"borrow.usn":1}).pretty()
+{ "_id" : { "isbn" : "123" }, "borrow" : { "usn" : "is111" } }
+
+> db.book.find({"title":"database"},{"borrow.usn":1}).pretty()
+{ "_id" : { "isbn" : "124" }, "borrow" : { "usn" : "is112" } }
+{ "_id" : { "isbn" : "125" }, "borrow" : { "usn" : "is113" } }

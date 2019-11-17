@@ -1,0 +1,16 @@
+#group specification must include an id
+
+> db.warehouse.insert({_id:{pno:1},pname:"bolt",color:"black",shipment:{_id:{pno:1},wno:1,wname:"amazon",quantity:5,date:"23 02 99"}})
+WriteResult({ "nInserted" : 1 })
+> db.warehouse.insert({_id:{pno:2},pname:"nut",color:"grey",shipment:{_id:{pno:2},wno:1,wname:"amazon",quantity:7,date:"27 03 98"}})
+WriteResult({ "nInserted" : 1 })
+> db.warehouse.insert({_id:{pno:3},pname:"screw",color:"grey",shipment:{_id:{pno:3},wno:2,wname:"maruti",quantity:8,date:"28 05 97"}})
+WriteResult({ "nInserted" : 1 })
+
+> db.warehouse.find({"shipment.wname":"amazon"},{"_id.pno":1,pname:1,color:1}).pretty()
+{ "_id" : { "pno" : 1 }, "pname" : "bolt", "color" : "black" }
+{ "_id" : { "pno" : 2 }, "pname" : "nut", "color" : "grey" }
+
+> db.warehouse.aggregate([{$group:{_id:"$shipment.wno",total:{$sum:"$shipment.quantity"}}}])
+{ "_id" : 2, "total" : 8 }
+{ "_id" : 1, "total" : 12 }

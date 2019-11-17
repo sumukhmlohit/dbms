@@ -1,0 +1,38 @@
+/*Enabling foreign keys in sqllite,below command*/ 
+/*PRAGMA foreign_keys=ON;*/
+create table part(
+pno number(4) primary key not null,
+pname varchar2(10),
+colour varchar2(10)
+);
+
+create table supplier(
+sno number(4) primary key not null,
+sname varchar2(10),
+address varchar2(10)
+);
+
+create table supply(
+pno number(4),
+sno number(4), 
+quantity number(4),
+primary key(pno,sno),
+foreign key(pno) references part(pno) on delete cascade,
+foreign key(sno) references supplier(sno) on delete cascade
+/*on delete cascade optional for sno*/
+);
+
+insert into part values(1,'nut','black');
+insert into supplier values(1,'ram','bglr');
+insert into supply values(1,1,4);
+
+insert into part values(2,'bolt','green');
+insert into supply values(2,1,5);
+
+select pno from supply where sno=(select sno from supplier where sname='ram');
+
+select sname from supplier where sno=(select sno from supply where pno=(select pno from part where pname='bolt'));
+
+delete from part where colour='green';
+select * from part;
+select * from supply;

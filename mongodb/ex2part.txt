@@ -1,0 +1,17 @@
+#_id can't be updated in mongodb & is immutable,use quotes for inner documents query
+
+
+> db.part.insert({_id:1,"pno":"1",pname:"bolt",color:"black",supply:{sno:"1",sname:"balaji",pno:"1",address:"girinagar"}})
+WriteResult({ "nInserted" : 1 })
+> db.part.insert({_id:2,"pno":"2",pname:"nut",color:"black",supply:{sno:"2",sname:"shubham",pno:"2",address:"yelahanka"}})
+WriteResult({ "nInserted" : 1 })
+> db.part.insert({_id:3,"pno":"3",pname:"screw",color:"grey",supply:{sno:"1",sname:"balaji",pno:"3",address:"girinagar"}})
+> db.part.insert({_id:4,"pno":"4",pname:"key",color:"gold",supply:{sno:"1",sname:"balaji",pno:"4",address:"girinagar"}})
+WriteResult({ "nInserted" : 1 })
+
+> db.part.update({"_id":1},{$set:{"pno":"4","supply.pno":"4"}})
+
+> db.part.find({"supply.pno":"4"},{"supply.sno":1,"supply.sname":1}).pretty()
+{ "_id" : 1, "supply" : { "sno" : "1", "sname" : "balaji" } }
+{ "_id" : 4, "supply" : { "sno" : "1", "sname" : "balaji" } }
+

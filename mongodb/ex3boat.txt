@@ -1,0 +1,41 @@
+> db.boat.insert({_id:{bid:1},bname:"royal navy",colour:"blue",reserves:{_id:{bid:1},sname:"raja",sid:1,day:"sunday"}})
+WriteResult({ "nInserted" : 1 })
+> db.boat.insert({_id:{bid:2},bname:"royal oak",colour:"black",reserves:{_id:{bid:2},sname:"raja",sid:1,day:"monday"}})
+WriteResult({ "nInserted" : 1 })
+> db.boat.insert({_id:{bid:3},bname:"royal silver",colour:"white",reserves:{_id:{bid:3},sname:"shyam",sid:2,day:"monday"}})
+> db.boat.insert({_id:{bid:4},bname:"royal gold",colour:"white",reserves:{_id:{bid:4},sname:"shyam",sid:2,day:"sunday"}})
+WriteResult({ "nInserted" : 1 })
+> db.boat.find({"reserves.sname":"raja"}).count()
+2
+
+> db.boat.find({colour:"white"}).pretty()
+{
+        "_id" : {
+                "bid" : 3
+        },
+        "bname" : "royal silver",
+        "colour" : "white",
+        "reserves" : {
+                "_id" : {
+                        "bid" : 3
+                },
+                "sname" : "shyam",
+                "sid" : 2,
+                "day" : "monday"
+        }
+}
+{
+        "_id" : {
+                "bid" : 4
+        },
+        "bname" : "royal gold",
+        "colour" : "white",
+        "reserves" : {
+                "_id" : {
+                        "bid" : 4
+                },
+                "sname" : "shyam",
+                "sid" : 2,
+                "day" : "sunday"
+        }
+}

@@ -1,0 +1,64 @@
+> db.employee.insert({_id:{ssn:"120"},name:"santhosh",deptno:"xyz",assigned_to:{_id:{usn:"120"},projectno:"1"}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_id:{ssn:"121"},name:"sanman",deptno:"abc",assigned_to:{_id:{usn:"121"},projectno:"2"}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_id:{ssn:"122"},name:"sundar",deptno:"def",assigned_to:{_id:{usn:"122"},projectno:"3"}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_id:{ssn:"123"},name:"sonu",deptno:"xyx",assigned_to:{_id:{usn:"123"},projectno:"2"}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_id:{ssn:"124"},name:"soma",deptno:"xyz",assigned_to:{_id:{usn:"124"},projectno:"1"}})
+WriteResult({ "nInserted" : 1 })
+> db.employee.find({"deptno":"xyz"}).pretty()
+{
+        "_id" : {
+                "ssn" : "120"
+        },
+        "name" : "santhosh",
+        "deptno" : "xyz",
+        "assigned_to" : {
+                "_id" : {
+                        "usn" : "120"
+                },
+                "projectno" : "1"
+        }
+}
+{
+        "_id" : {
+                "ssn" : "124"
+        },
+        "name" : "soma",
+        "deptno" : "xyz",
+        "assigned_to" : {
+                "_id" : {
+                        "usn" : "124"
+                },
+                "projectno" : "1"
+        }
+}
+> db.employee.find({"assigned_to.projectno":"2"}).pretty()
+{
+        "_id" : {
+                "ssn" : "121"
+        },
+        "name" : "sanman",
+        "deptno" : "abc",
+        "assigned_to" : {
+                "_id" : {
+                        "usn" : "121"
+                },
+                "projectno" : "2"
+        }
+}
+{
+        "_id" : {
+                "ssn" : "123"
+        },
+        "name" : "sonu",
+        "deptno" : "xyx",
+        "assigned_to" : {
+                "_id" : {
+                        "usn" : "123"
+                },
+                "projectno" : "2"
+        }
+}
