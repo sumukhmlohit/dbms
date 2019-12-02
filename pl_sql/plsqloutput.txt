@@ -1,0 +1,509 @@
+
+SQL> set serveroutput on
+SQL> @acc.sql
+name ram ssn is 1
+name asha ssn is 2
+name usha ssn is 3
+name sri ssn is 4
+
+PL/SQL procedure successfully completed.
+
+Code b1Name is msr Assets is: 10000
+Code b2Name is rnr Assets is: 20000
+Code b3Name is smr Assets is: 15000
+Code b4Name is skr Assets is: 25000
+
+PL/SQL procedure successfully completed.
+
+Account number is a1SSN is 1 code is: b1balance is: 100000
+Account number is a2SSN is 1 code is: b1balance is: 200000
+Account number is a3SSN is 2 code is: b2balance is: 100000
+Account number is a4SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a7SSN is 4 code is: b2balance is: 200000
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @acc.sql
+name ram ssn is 1
+name asha ssn is 2
+name usha ssn is 3
+name sri ssn is 4
+
+PL/SQL procedure successfully completed.
+
+Code b1Name is msr Assets is: 10000
+Code b2Name is rnr Assets is: 20000
+Code b3Name is smr Assets is: 15000
+Code b4Name is skr Assets is: 25000
+
+PL/SQL procedure successfully completed.
+
+Account number is a1SSN is 1 code is: b1balance is: 110000
+Account number is a2SSN is 1 code is: b1balance is: 220000
+Account number is a3SSN is 2 code is: b2balance is: 100000
+Account number is a4SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a7SSN is 4 code is: b2balance is: 200000
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+Account number is a1SSN is 1 code is: b1balance is: 121000
+Account number is a2SSN is 1 code is: b1balance is: 242000
+Account number is a3SSN is 2 code is: b2balance is: 100000
+Account number is a4SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a7SSN is 4 code is: b2balance is: 200000
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @acc.sql
+name ram ssn is 1
+name asha ssn is 2
+name usha ssn is 3
+name sri ssn is 4
+
+PL/SQL procedure successfully completed.
+
+Code b1Name is msr Assets is: 10000
+Code b2Name is rnr Assets is: 20000
+Code b3Name is smr Assets is: 15000
+Code b4Name is skr Assets is: 25000
+
+PL/SQL procedure successfully completed.
+
+Account number is a1SSN is 1 code is: b1balance is: 121000
+Account number is a2SSN is 1 code is: b1balance is: 242000
+Account number is a3SSN is 2 code is: b2balance is: 100000
+Account number is a4SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a5SSN is 3 code is: b2balance is: 100000
+Account number is a7SSN is 4 code is: b2balance is: 200000
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> create table employee2(
+  2  usn varchar2(10) primary key not null, 
+  3  dno number(10),
+  4  salary number(10));
+
+Table created.
+
+SQL> insert into employee2 values('&usn',&dno,&salary);
+Enter value for usn: 1
+Enter value for dno: 10
+Enter value for salary: 100000
+old   1: insert into employee2 values('&usn',&dno,&salary)
+new   1: insert into employee2 values('1',10,100000)
+
+1 row created.
+
+SQL> /
+Enter value for usn: 2
+Enter value for dno: 1
+Enter value for salary: 50000
+old   1: insert into employee2 values('&usn',&dno,&salary)
+new   1: insert into employee2 values('2',1,50000)
+
+1 row created.
+
+SQL> /
+Enter value for usn: 3
+Enter value for dno: 10
+Enter value for salary: 70000
+old   1: insert into employee2 values('&usn',&dno,&salary)
+new   1: insert into employee2 values('3',10,70000)
+
+1 row created.
+
+SQL> /
+Enter value for usn: 4
+Enter value for dno: 5
+Enter value for salary: 80000
+old   1: insert into employee2 values('&usn',&dno,&salary)
+new   1: insert into employee2 values('4',5,80000)
+
+1 row created.
+
+SQL> /
+Enter value for usn: 5
+Enter value for dno: 10
+Enter value for salary: 150000
+old   1: insert into employee2 values('&usn',&dno,&salary)
+new   1: insert into employee2 values('5',10,150000)
+
+1 row created.
+
+SQL> set serveroutput on
+SQL> @emp.sql
+number of rows updated are3
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @accursor.sql
+			dbms_output.put_line('code'||' 'v_cc.code||' '||'name'||v_cc.name||' '||'assets'||' '||v_cc.assets)
+			                                *
+ERROR at line 13:
+ORA-06550: line 13, column 36:
+PLS-00103: Encountered the symbol "V_CC" when expecting one of the following:
+) , * & = - + < / > at in is mod remainder not rem =>
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec as between from using || member submultiset
+The symbol "," was substituted for "V_CC" to continue.
+ORA-06550: line 15, column 3:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+:= . ( % ;
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> set serveroutput on
+SQL> @accursor.sql
+		end loop;
+		*
+ERROR at line 15:
+ORA-06550: line 15, column 3:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+:= . ( % ;
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> set serveroutput on
+SQL> @accursor.sql
+code b1 namemsr assets 10000
+code b2 namernr assets 20000
+code b3 namesmr assets 15000
+code b4 nameskr assets 25000
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @accursor.sql
+code b1 namemsr assets 10000
+code b2 namernr assets 20000
+code b3 namesmr assets 15000
+code b4 nameskr assets 25000
+
+PL/SQL procedure successfully completed.
+
+ssn 1 nameram place bng
+ssn 2 nameasha place mng
+ssn 3 nameusha place mys
+ssn 4 namesri place del
+
+PL/SQL procedure successfully completed.
+
+acc no a1 balance:133100 ssn: 1code is:133100
+acc no a2 balance:266200 ssn: 1code is:266200
+acc no a3 balance:100000 ssn: 2code is:100000
+acc no a4 balance:100000 ssn: 3code is:100000
+acc no a5 balance:100000 ssn: 3code is:100000
+acc no a5 balance:100000 ssn: 3code is:100000
+acc no a7 balance:200000 ssn: 4code is:200000
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @prime.sql
+Enter value for n: 3
+old   2: 	n number:=&n;
+new   2: 	n number:=3;
+end;
+   *
+ERROR at line 24:
+ORA-06550: line 24, column 4:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+if
+
+
+SQL> set serveroutput on
+SQL> @prime.sql
+Enter value for n: 3
+old   2: 	n number:=&n;
+new   2: 	n number:=3;
+3is a prime number
+
+PL/SQL procedure successfully completed.
+
+SQL> @prime.sql
+Enter value for n: 6
+old   2: 	n number:=&n;
+new   2: 	n number:=6;
+6is not a prime number
+
+PL/SQL procedure successfully completed.
+
+SQL> create table part1(
+  2  pno int,
+  3  pname char(20),
+  4  colour char(20),
+  5  primary key(pno));
+
+Table created.
+
+SQL> create table copy_part2(
+  2  pno int,
+  3  pname char(20),
+  4  colour char(20),
+  5  primary key(pno));
+
+Table created.
+
+SQL> insert into part1 values(10,'nuts','black');
+
+1 row created.
+
+declare 
+
+cursor cc is
+SP2-0734: unknown command beginning "cursor cc ..." - rest of line ignored.
+select * from branch;
+v_cc cc%ROWTYPE;
+
+begin
+open cc;
+loop 
+fetch cc into v_cc;
+
+CODE	   NAME 	  ASSETS
+---------- ---------- ----------
+b1	   msr		   10000
+b2	   rnr		   20000
+b3	   smr		   15000
+b4	   skr		   25000
+
+SQL> SP2-0734: unknown command beginning "v_cc cc%RO..." - rest of line ignored.
+SQL> SQL>   2    3    4    5  
+exit when cc%NOTFOUND;
+  7  
+dbms_output.put_line('code'||' '||v_cc.code||' '||'name'||v_cc.name||' '||'assets'||' '||v_cc.assets);
+  9  
+end loop;
+ 11  
+close cc;
+end;
+/
+open cc;
+     *
+ERROR at line 2:
+ORA-06550: line 2, column 6:
+PLS-00201: identifier 'CC' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 4, column 7:
+PLS-00201: identifier 'CC' must be declared
+ORA-06550: line 4, column 1:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 6, column 11:
+PLS-00201: identifier 'CC' must be declared
+ORA-06550: line 6, column 1:
+PL/SQL: Statement ignored
+ORA-06550: line 8, column 35:
+PLS-00201: identifier 'V_CC.CODE' must be declared
+ORA-06550: line 8, column 1:
+PL/SQL: Statement ignored
+ORA-06550: line 12, column 7:
+PLS-00201: identifier 'CC' must be declared
+ORA-06550: line 12, column 1:
+PL/SQL: SQL Statement ignored
+
+
+SQL> insert into part1 values(20,'bolts','grey');
+
+1 row created.
+
+SQL> insert into part1 values(30,'screw','green');
+
+1 row created.
+
+SQL> set serveroutput on
+SQL> @copycur.sql
+declare curr is
+             *
+ERROR at line 1:
+ORA-06550: line 1, column 14:
+PLS-00103: Encountered the symbol "IS" when expecting one of the following:
+constant exception <an identifier>
+<a double-quoted delimited-identifier> table long double ref
+char time timestamp interval date binary national character
+nchar
+
+
+SQL> set serveroutput on
+SQL> @copycur.sql
+3rows inserted into table table copy_part2
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fibonacci.sql
+0
+1
+1
+2
+3
+5
+8
+13
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fibonacci.sql
+Enter value for n: 10
+old   5: 	n number:=&n;
+new   5: 	n number:=10;
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fact.sql
+	dbms_output.put_line('answer is'fact1);
+	                                *
+ERROR at line 21:
+ORA-06550: line 21, column 34:
+PLS-00103: Encountered the symbol "FACT1" when expecting one of the following:
+) , * & = - + < / > at in is mod remainder not rem =>
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec as between from using || multiset member
+submultiset
+The symbol "," was substituted for "FACT1" to continue.
+
+
+SQL> set serveroutput on
+SQL> @fact.sql
+	dbms_output.put_line('answer is'fact1);
+	                                *
+ERROR at line 21:
+ORA-06550: line 21, column 34:
+PLS-00103: Encountered the symbol "FACT1" when expecting one of the following:
+) , * & = - + < / > at in is mod remainder not rem =>
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec as between from using || multiset member
+submultiset
+The symbol "," was substituted for "FACT1" to continue.
+
+
+SQL> set serveroutput on
+SQL> @fact.sql
+	dbms_output.put_line('answer is'fact1);
+	                                *
+ERROR at line 21:
+ORA-06550: line 21, column 34:
+PLS-00103: Encountered the symbol "FACT1" when expecting one of the following:
+) , * & = - + < / > at in is mod remainder not rem =>
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec as between from using || multiset member
+submultiset
+The symbol "," was substituted for "FACT1" to continue.
+
+
+SQL> set serveroutput on
+SQL> @fact.sql
+answer is40320
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fact.sql
+answer is6
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fact.sql
+Enter value for t: 4
+old   2: 	t number=&t;
+new   2: 	t number=4;
+	t number=4;
+	        *
+ERROR at line 2:
+ORA-06550: line 2, column 10:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ; not null range default character
+The symbol ":= was inserted before "=" to continue.
+
+
+SQL> set serveroutput on
+SQL> @fact.sql
+Enter value for t: 3
+old   2: 	t number:=&t;
+new   2: 	t number:=3;
+answer is6
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @fact.sql
+Enter value for t: 4
+old   2: 	t number:=&t;
+new   2: 	t number:=4;
+answer is24
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @palindrome.sql
+Enter value for n: 55
+old   9: 	n:=&n;
+new   9: 	n:=55;
+	end if;
+	*
+ERROR at line 23:
+ORA-06550: line 23, column 2:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+:= . ( % ;
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> set serveroutput on
+SQL> @palindrome.sql
+Enter value for n: 44
+old   9: 	n:=&n;
+new   9: 	n:=44;
+number is palindrome
+
+PL/SQL procedure successfully completed.
+
+SQL> @palindrome.sql
+Enter value for n: 45
+old   9: 	n:=&n;
+new   9: 	n:=45;
+number is not a palindrome
+
+PL/SQL procedure successfully completed.
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+
