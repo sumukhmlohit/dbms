@@ -5,6 +5,7 @@ declare
 PROCEDURE procedure_fact(n in number, fact out number) is
 /* in parameters referenced by procedure and value can't be overwritten by procedure */
 /*out parameters can't bereferenced by procedure but value can be overwritten by procedure */
+/*out basically returns from procedure*/
 i number;
 /*beginning of procedure*/
 begin
